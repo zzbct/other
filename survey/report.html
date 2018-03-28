@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>吾优儿童心理·个人报告</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>	
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../libs/mui.min.css?v=1" rel="stylesheet" />
+	<link href="../libs/reset.css?v=1" rel="stylesheet" />
+	<link href="../css/base.css?v=1" rel="stylesheet" />
+	<link href="../css/survey.css?v=2" rel="stylesheet" />
+	<script src="https://unpkg.com/vue"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+
+<body>
+<div class="page" id="app">
+	<!--<div class="header">吾优儿童心理·个人报告</div>-->
+	<div class="r_title">{{rData.title}}</div>
+	<img :src="rData.result_img" class="r_banner"/>
+	<p class="r_desc">{{rData.start_content}}</p>	
+	<div class="report_box">
+		<div class="title1">分数及解释</div>
+		<!--<div class="mui-segmented-control">
+		    <a class="mui-control-item " href="#item1">个人关键词</a>
+		    <a class="mui-control-item mui-active" href="#item2">分数及解释</a>
+		    <a class="mui-control-item " href="#item3">应用建议</a>
+		</div>-->
+		
+		<!--<div id="item1" class="mui-control-content ">-->
+			<div>
+			<!--<ul class="key_list">
+				<li>
+					<p class="key_title"></p>
+					<p class="key_text">{{report.type}}</p>
+				</li>
+
+			</ul>-->
+			<div v-for="item in report">
+				<p class="point_desc" style="text-align: center; font-size: 16px;margin:20px 0 20px 0px;">{{item.title}}</p>
+				<div class="point_box" style="margin:10px auto;">
+					<p class="sum_point">得分：{{item.score}}</p>
+					<p class="point_desc">{{item.type}}</p>
+					<div class="padding_10"></div>
+				</div>
+				<p class="suc" >{{item.expound}}</p>
+				<!--<p class="suc" >建议：{{item.proposal}}</p>-->	
+			</div>
+		</div>
+		
+		
+		
+		<div id="item2" class="mui-control-content mui-active" style="display:none;">
+			<div class="point_box">
+				<p class="sum_point">得分：{{report.score}}</p>
+				<p class="point_desc">{{report.type}}</p>
+				<div class="padding_10"></div>
+			</div>
+			
+			<!--<ul class="point_list">
+				<li>
+					<p class="left">因子1（注意缺陷）：</p>left
+				</li>
+				<li>
+					<p class="left">因子1（注意缺陷）：</p>left
+				</li>
+				<li>
+					<p class="left">因子1（注意缺陷）：</p>left
+				</li>
+				<li>
+					<p class="left">因子1（注意缺陷）：</p>left
+				</li>
+				
+			</ul>-->
+			
+			<p class="point_info" style="text-indent: 2em;">{{report.expound}}</p>
+		</div>
+		<div id="item3" class="mui-control-content" style="display:none;">
+			<p class="suc" style="text-indent: 2em;">{{report.proposal}}</p>
+			<!--<span class="tip_bg">可以尝试以下方法对孩子进行矫治:</span>
+			<p class="method_box">
+				心理学家从事基础研究的目的是描述、解释、预测和影响行为。应用心理学家还有第五个目的——提高人类生活的质量。这些目标构成了心理学事业的基础。
+			</p>-->
+		</div>
+		
+	</div>
+	
+	<div class="report_box">
+		<div class="title1">建议</div>
+		<!--<div class="mui-segmented-control">
+		    <a class="mui-control-item " href="#item1">个人关键词</a>
+		    <a class="mui-control-item mui-active" href="#item2">分数及解释</a>
+		    <a class="mui-control-item " href="#item3">应用建议</a>
+		</div>-->
+		
+		<!--<div id="item1" class="mui-control-content ">-->
+			<div>
+			<!--<ul class="key_list">
+				<li>
+					<p class="key_title"></p>
+					<p class="key_text">{{report.type}}</p>
+				</li>
+
+			</ul>-->
+			<div v-for="item in report">
+				<p class="suc" >{{item.proposal}}</p>	
+			</div>
+		</div>
+		
+	</div>	
+	
+	<div class="report_box">
+		<p class="suc" >{{rData.end_content}}</p>	
+	</div>		
+	
+<p class="r_desc">儿童阶段是人的一生中心理发展、人格形成的关键时期，各种认知能力，情绪模式，行为习惯均在此阶段奠定基础，所以提高儿童的心理素质、培养孩子的健全人格，不仅能帮助孩子健康成长，更可以使其受益终生。然而，帮助孩子成长需要我们的父母首先科学地认识孩子，根据孩子的心理发育状况采取科学专业及个性化的养育方式，为孩子的成长保驾护航。</p>	
+	
+	<button class="r_btn" @click="goIndex">查看吾优更多服务 ></button>
+</div>
+</body>
+
+</html>
+<!--<script src="../libs/mui.min.js?v=1"></script>-->
+<script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="../js/common.js?v=2"></script>
+<script type="text/javascript">
+//	mui.init(); 
+var app = new Vue({
+	el: '#app',
+	data: {
+	    report:[],
+	    rData:{},
+	},
+	
+	created: function () {	
+//		alert(123213);
+//		alert(getReport);
+		const scale_id = module.getUrlParam('scale_id');
+		const sn = module.getUrlParam('sn');
+		const batchid = module.getUrlParam('batchid');
+		const param = {
+			scale_id,
+			sn,
+			batchid,
+		};
+		module._get(getReport,param ,(res) =>{
+//			alert(res.msg);
+			if(res.status == 1){
+				//this.report = res.data;
+				this.report = res.data.result;
+				this.rData = res.data
+			}
+		})
+		
+		pushHistory(); 
+	    window.addEventListener("popstate", function(e) { 
+	        console.log("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能 
+	        location.href = '../user/index.html'
+	    }, false); 
+	    function pushHistory() { 
+	        var state = { 
+	            title: "title", 
+	            url: "#"
+	        }; 
+	        window.history.pushState(state, "title", "#"); 
+	    } 		
+	},
+	
+    methods: { 
+    		goDetail:function(id){
+			location.href = './survey/desc.html?scale_id=' + id;
+    		},
+    		goIndex:function(){
+    			location.href = '../index.html';
+    		},
+    		goCategory:function(){
+    			location.href = '../category/category.html';
+    		}, 
+    		goUser:function(){
+    			location.href = '../user/index.html';
+    		},   
+    },  	
+})	
+</script>

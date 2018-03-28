@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>第三方登陆</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>	
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../libs/mui.min.css" rel="stylesheet" />
+	<link href="../libs/reset.css" rel="stylesheet" />
+	<link href="../css/base.css" rel="stylesheet" />
+	<link href="../css/user.css" rel="stylesheet" />
+	<script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div class="page" id="app">
+	<p style="color:#888;font-size: 14px;position:absolute;left:0;top:40%;width:100%;text-align:center;">正在登录</p>
+</div>
+</body>
+
+</html>
+<!--<script src="../libs/mui.min.js"></script>-->
+<script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="../js/common.js"></script>
+<script type="text/javascript">
+var app = new Vue({
+	el: '#app',
+	data: {
+	},
+	
+	created: function () {	
+		const backUri = decodeURIComponent(module.getUrlParam('backUri'));
+		const code = module.getUrlParam('code');
+		console.log(backUri);
+		console.log(code);
+		const param = {
+			code,
+		};			
+		module._get(tLogin,param,(res)=>{
+			if(res.status == 1){
+				location.href = backUri;
+			}
+		}); 
+//		module.tLogin(code,backUri);		
+//  		submit:{
+//  			$('form').submit();
+//  		};		
+	},
+	
+    methods: { 
+    },  	
+})	
+</script>

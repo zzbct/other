@@ -1,0 +1,255 @@
+body{
+	background:#fff;
+	font-size: 13px;
+	font-family: 'PingFang-SC-Regular';
+}
+.page{
+	width:100%;
+	height:auto;
+	background: #fff;
+}
+
+.bg{
+	background:url('../images/bg1.png') center center repeat-y;
+	background-size: cover;
+	background-position: center;
+	/*width:100%;
+	position: fixed;
+	left:0;
+	top:0;
+	bottom: 0;		*/
+	min-height:100%;
+}
+
+.bgline{
+	background:url('../images/bgl.png') center center repeat-y;
+	background-size: cover;
+	background-position: center;	
+	min-height:667px;
+	
+}
+
+.public_line_bg {
+	width:100%;
+	height:100%;
+	position: fixed;
+	left:0;
+	top:0;
+	bottom: 0;	
+    -webkit-background-size: 8px 8px;
+    -moz-background-size: 8px 8px;
+    background-size: 8px 8px; /* 控制条纹的大小 */
+    
+    -moz-box-shadow: 1px 1px 8px gray;
+    -webkit-box-shadow: 1px 1px 8px gray;
+    box-shadow: 1px 1px 8px gray;
+	
+    background-color: #f7f7f7;
+    background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+                            color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+                            color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+                            color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+                            to(transparent));
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                        transparent 75%, transparent);
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                        transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                        transparent 75%, transparent);
+}
+
+
+.padding_40 {
+	width:100%;
+	height:40px;
+}
+
+.padding_20 {
+	width:100%;
+	height:20px;
+}
+
+.padding_10 {
+	width:100%;
+	height:10px;
+}
+
+
+.public_omit{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+.public_omit2{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	
+}
+
+.public_clear_float{
+	clear: both;
+	width:100%;
+	height:5px;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active{
+	color:#acce22;
+}
+
+.promat{
+	width:100%;
+	height:auto;
+	margin-top:80px;
+}
+
+.promat_btn{
+	background: #62c3d0;
+	color:#fff;
+	font-size: 12px;
+	margin:50px auto;
+	display: block;
+}
+
+
+.header{
+	width:100%;
+	height:50px;
+	background: #1b1b20;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+	line-height: 50px;
+	letter-spacing: 1px;
+}
+
+/*more_list */
+
+.r_price_box{
+	width:88%;
+	height:auto;
+	margin:0 auto 0;
+}
+
+.cash_fee{
+	font-size: 14px;
+	color: #62C3D0;
+}
+
+.fee{
+	font-size: 10px;
+	color: #888;
+	text-decoration: line-through;
+}
+
+
+.more_list{
+	width:94.8%;
+	height:auto;
+	margin:0 auto 60px;
+}
+
+.more_list > li{
+	width:100%;
+	height:100px;
+	border-bottom:1px solid #f7f7f7;
+}
+
+.more_list > li > img{
+	width:75px;
+	height:75px;
+	float:right;
+	margin:12.5px auto;
+}
+
+.more_title{
+	width:100%;
+	height:20px;
+	line-height: 20px;
+	color: #353535;
+	font-size: 14px;
+	margin:12px 0 4px 0;
+}
+
+.wait_title{
+	width:100%;
+	height:20px;
+	line-height: 20px;
+	color: #353535;
+	font-size: 16px;
+	margin:20px 0 10px 0;
+}
+
+.complate_title{
+	width:100%;
+	height:20px;
+	line-height: 20px;
+	color: #62C3D0;
+	font-size: 16px;
+	margin:20px 0 10px 0;
+}
+
+.more_price{
+	width:100%;
+	height:auto;
+	margin:6px auto 0;
+	
+}
+
+.more_desc,.wait_desc,.complate_desc{
+	width:100%;
+	height:auto;
+	color:#888;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+
+.left_wrap{
+	width:70%;
+	/*max-width:70%;*/
+	height:100px;
+	float:left;
+}
+
+.public_mask{
+	width:100%;
+	height:auto;
+	position:absolute;
+	bottom:0;
+	top:0;
+	background: #000;
+	opacity: 0.62;
+}
+
+/*ending*/
+
+@media screen and (min-width: 800px){
+	.page{
+		width:750px;
+		height:auto;
+		margin:0 auto;
+	}
+	
+	.promat_btn{
+		background: #62c3d0;
+		color:#fff;
+		font-size: 16px;
+		margin:50px auto 100px;
+		display: block;
+	}
+	
+	.public_line_bg{
+		position: fixed;
+		left:50%;
+		top:0;
+		bottom:0;
+		margin-left:-375px;
+	}
+	
+}

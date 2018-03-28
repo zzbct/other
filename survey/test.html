@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>吾优测试表</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>	
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../libs/mui.min.css?v=1" rel="stylesheet" />
+	<link href="../libs/reset.css?v=1" rel="stylesheet" />
+	<link href="../css/base.css?v=1" rel="stylesheet" />
+	<link href="../css/survey.css?v=1" rel="stylesheet" />
+	<script src="https://unpkg.com/vue?v=2"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+
+<body>
+<div class="page public_line_bg" id="app">
+	<div class="progress_box">
+		<span class="test_num">{{currentNum}}/{{num}}</span>
+		<div class="progress" style="width:80%;">
+			<span class="progress_color"></span>
+			<img src="../images/progress.png" id="progress_img"/>
+		</div>
+		<!--<span class="count_time">剩余时间：10:00</span>-->
+	</div>
+	
+	<div v-for="item in data.questionsList" v-if="item.question_no == current">
+	<p class="question">{{item.question_no}}. {{item.title}}</p>
+	<!--<input type="hidden" value="" :id="item.questions_id"/>-->
+	<button type="button" @click="bindOption(option.optionId,option.results,item.question_no)" :class="checkCurr == option.optionId ? 'test_active_option' : ''" class="mui-btn mui-btn-outlined test_btn complate_desc" v-for="(option,index) in item.options">{{index+1}}&emsp;&emsp;{{option.title}}</button>
+	<!--<button type="button" class="mui-btn mui-btn-outlined test_btn complate_desc">还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少还算不少</button>-->
+	<!--<button type="button" class="mui-btn mui-btn-outlined test_btn">01&emsp;&emsp;有一点点</button>
+	<button type="button" class="mui-btn mui-btn-outlined test_btn">01&emsp;&emsp;还算不少</button>
+	<button type="button" class="mui-btn mui-btn-outlined test_btn">01&emsp;&emsp;基本全是</button>-->
+	
+	<!--<button type="button" class="mui-btn mui-btn-outlined next nextQuestion" id="first_btn" @click="nextQuestion">下一题</button>-->
+	<button type="button" class="mui-btn mui-btn-outlined next nextQuestion" @click="prevQuestion" id="first_btn" v-if="current > 1">返回上一题</button>
+	<button type="button" class="mui-btn mui-btn-outlined next nextQuestion" style="margin-top:15px;display: none;" id="report_btn" @click="goReport">查看报告</button>
+	<!--<div class="submit_box" v-else>
+		<button type="button" class="mui-btn mui-btn-outlined next_small prevQuestion" @click="prevQuestion">返回上一题</button>
+		<button type="button" class="mui-btn mui-btn-outlined next_small nextQuestion" style="float:right;" id="finaly_btn" @click="nextQuestion" v-if="currentNum != 12">下一题</button>
+		<button type="button" class="mui-btn mui-btn-outlined next_small" style="float:right;" id="report_btn" @click="goReport" v-if="currentNum == 12">查看报告</button>
+	</div>-->
+	</div>	
+	<div class="public_mask" v-if="maskStatus"></div>
+	<div class="test_promat" v-if="maskStatus">
+		<div class="title_promat">
+			<p class="padding_20"></p>
+			<img src="../images/deng_icon.png" />
+			<p class="title">{{data.scale_info.title}}</p>
+		</div>
+		<p class="test_info">{{data.scale_info.guidance}}</p>
+		<button type="button" class="mui-btn mui-btn-outlined start_btn" @click="startTest">开始答题</button>
+	</div>
+</div>
+</body>
+
+</html>
+<!--<script src="../libs/mui.min.js"></script>-->
+<script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js?v=1"></script>
+<script src="../js/common.js?v=3333"></script>
+<script src="../libs/layer/layer.js?v=222"></script>
+<script type="text/javascript">
+	
+var app = new Vue({
+	el: '#app',
+	data: {
+	    data:[],
+	    maskStatus:true,
+	    current:null,
+	    checkCurr:null,
+	    num:null,
+	    currentNum:1,
+	    submitData:{},
+	    end:1,
+	},
+	
+	created: function () {		
+		const sn = module.getUrlParam('sn');
+		const scale_id = module.getUrlParam('scale_id');
+		const batch = module.getUrlParam('batch');
+		const param ={
+			sn,
+			scale_id,
+		};
+		if(batch){
+			param.batch = batch;
+		}		
+//		console.log(param);
+		module._get(getQuestionsList,param, (res)=>{
+			//alert(res.msg);
+			if(res.status == 1){
+				this.data = res.data;
+				this.num = res.data.scale_info.num;
+				this.current = res.data.questionsList[0].question_no;
+				this.submitData = {
+					sn : res.data.order_sn,
+					scale_id:res.data.scale_id,
+					batch:res.data.batch,
+				};
+				
+				var step = 100 / this.num;
+				var progress = this.currentNum * step +'%';				
+				$('.test_num').html(this.currentNum + '/' + this.num);
+				$('#progress_img').css({'left':progress});
+				$('.progress_color').css({'width':progress});						
+			}
+		});
+	},
+	
+    methods: { 
+		startTest:function(){
+			this.maskStatus = false;
+		},
+		bindOption:function(id,results,question_no){
+			this.checkCurr = id;
+			this.submitData.question_no = question_no;
+			this.submitData.result = results;			
+//			$('#' + this.current).val(results);
+//			const val = $('#' + this.current).val();
+//			console.log(question_no);
+			
+			setTimeout(this.nextQuestion,1000);
+				
+//				console.log(id);
+//			if(this.current < this.num){
+//				this.current +=1;
+//				this.currentNum += 1;
+//				var step = 100 / this.num;
+//				var progress = this.currentNum * step +'%';
+//				$('.test_num').html(this.current + '/' + this.num);
+//				$('#progress_img').css({'left':progress});
+//				$('.progress_color').css({'width':progress});			
+//			}
+//			
+//			if(this.current <= this.num){
+//				this.end++;
+//			}
+//			console.log(this.end);
+//			module._post(submitTest,this.submitData,(res)=>{
+//				if(res.status == 1){
+//					delete this.submitData.result;
+//					delete this.submitData.question_no;
+//					if(this.end >this.num){
+//						//$('#first_btn').hide();
+//						$('#report_btn').show();
+//					}
+//				}
+////				console.log(res.msg);
+//			});			
+
+		},
+		nextQuestion:function(){
+			
+			if(!this.submitData.result || !this.submitData.question_no){
+				layer.msg('请先选择答案');
+				return false;
+			}
+			
+			if(this.current < this.num){
+				this.current +=1;
+				this.currentNum += 1;
+				var step = 100 / this.num;
+				var progress = this.currentNum * step +'%';
+				$('.test_num').html(this.current + '/' + this.num);
+				$('#progress_img').css({'left':progress});
+				$('.progress_color').css({'width':progress});			
+			}
+			
+			if(this.current <= this.num){
+				this.end++;
+			}
+//			console.log(this.end);
+			module._post(submitTest,this.submitData,(res)=>{
+				if(res.status == 1){
+					delete this.submitData.result;
+					delete this.submitData.question_no;
+//					console.log(res);
+					if(this.end > this.num){
+//						console.log(111);
+//						$('#first_btn').hide();
+						//$('#report_btn').show();
+					}
+				}
+//				console.log(res.msg);
+			});
+//			this.current +=1;	
+		},
+		prevQuestion:function(){
+			if(this.current > 1){
+				this.end--;
+				this.current -=1;
+				this.currentNum -= 1;
+				var step = 100 / this.num; 		
+				var progress = this.currentNum * step +'%';
+				$('.test_num').html(this.current + '/' + this.num);
+				$('#progress_img').css({'left':progress});
+				$('.progress_color').css({'width':progress});			
+			}
+		},		
+		
+		goReport:function(){
+			const sn = this.submitData.sn;
+			const scale_id = this.submitData.scale_id;
+			const batch = this.submitData.batch;
+
+    			location.href = '../survey/report.html?sn=' + sn +'&scale_id=' + scale_id + '&batchid=' + batch;	
+	
+		}
+    },  	
+})		
+	
+//	mui.init(); 
+//$('.start_btn').click(function(){
+//	$('.test_promat').hide();
+//	$('.public_mask').hide();
+//});
+//$('#report_btn').click(function(){
+//	window.location.href = './report.html';
+//});
+//
+//var sum = 10;
+//var current = 1;
+//$('#progress_img').css({'left':'10%'});
+//$('.progress_color').css({'width':'10%'});
+//$('.nextQuestion').click(function(){
+//	if(current < sum){
+//		current++;
+//		var step = 100 / sum;
+//		var progress = current * step +'%';
+//		console.log(progress);
+//		$('.test_num').html(current + '/' + sum);
+//		$('#progress_img').css({'left':progress});
+//		$('.progress_color').css({'width':progress});
+//	}
+//	if(current > 1){
+//		$('#first_btn').hide();
+//		$('.submit_box').show();
+//	}else{
+//		$('#first_btn').show();
+//		$('.submit_box').hide();
+//	}
+//	if(current == sum){
+//		$('#finaly_btn').hide();
+//		$('#report_btn').show();
+//	}
+//});
+//
+//$('.prevQuestion').click(function(){
+//	console.log(current);
+//	if(current > 1){
+//		current -- ;
+//		$('.test_num').html(current + '/' + sum);
+//		var step = 100 / sum;
+//		var progress = current * step +'%';
+//		console.log(progress);
+//		$('.test_num').html(current + '/' + sum);
+//		$('#progress_img').css({'left':progress});
+//		$('.progress_color').css({'width':progress});
+//		
+//	}else{
+//		$('#first_btn').show();
+//		$('.submit_box').hide();		
+//	}
+//	
+//	if(current != sum){
+//		$('#finaly_btn').show();
+//		$('#report_btn').hide();
+//	}	
+//});
+</script>

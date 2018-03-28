@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>吾优儿童心理-发现之旅</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>	
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../libs/mui.min.css" rel="stylesheet" />
+	<link href="../libs/reset.css" rel="stylesheet" />
+	<link href="../css/base.css" rel="stylesheet" />
+	<link href="../libs/layer/layer.css" rel="stylesheet" />
+	<link href="../css/survey.css?v=222" rel="stylesheet" />
+	<script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div class="page bgline" id="app">
+	<div class="padding_40"></div>
+	<img :src="data.cover_img"  class="desc_pic"/>
+	<!--<img :src="data.cover_img" v-if="data.cover_img" class="desc_pic"/>-->
+	<div class="desc_title">
+		{{data.title}}
+	</div>
+	<img src="../images/desc_info.png" class="icon"/>
+	<p class="desc_info">{{data.content != '' && data.content ? data.content : '暂无简介'}}</p>
+	<img src="../images/desc_d.png" class="icon"/>
+	<p class="desc_info" style="text-indent: 0;margin-bottom:50px;">
+		量表共{{data.num}}道测试题目，<br/>
+		价格为{{data.price}}元<br/>
+		{{data.guidance}}
+	</p>
+	<!--<img src="../images/pay.png"  class="pay_btn" @click="goPay(data.id)"/>-->
+	<div class="pay_button" @click="goPay(data.id)">支付，立即开始探索之旅</div>
+	<div class="padding_40"></div>
+</div>
+</body>
+
+</html>
+<!--<script src="../libs/mui.min.js"></script>-->
+<script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../libs/layer/layer.js"></script>
+<!--<script src="/heart_children_m/js/survey_pay.js"></script>-->
+<script type="text/javascript">
+var app = new Vue({
+	el: '#app',
+	data: {
+		data:'',
+	},
+	
+	created: function () {	
+		const scale_id = module.getUrlParam('scale_id');
+		const param = {
+			scale_id,
+		};
+		module._get(getDetail,param,(res) =>{
+			if(res.status == 1){
+				this.data = res.data;
+			}
+		}); 		
+	},
+	
+    methods: { 
+		goPay:function (scale_id){
+			const param = {
+				scale_id,
+			}
+			module._post(createOrder,param, (res)=>{
+				if(res.status == 1){
+					location.href = pay + '?outTradeNo=' + res.data.sn;
+				}else{
+					if(res.errCode == 30002){
+						module.alert(res.msg,'去支付',function(){
+							location.href = pay + '?outTradeNo=' + res.data.sn;
+						});
+					}
+				}
+			});
+		}
+    },  	
+})		
+//	mui.init(); 
+//$('.pay_btn').click(function(){
+//	layer.confirm('确认去支付？', {
+//	  btn: ['重要','奇葩'] //按钮
+//	}, function(){
+//	  layer.msg('的确很重要', {icon: 1});
+//	}, function(){
+//	  layer.msg('也可以这样', {
+//	    time: 20000, //20s后自动关闭
+//	    btn: ['明白了', '知道了']
+//	  });
+//	});
+//	layer.msg('支付成功');
+//	setTimeout(function(){
+//		window.location.href = './write_user_info.html';
+//	},2000);
+//});
+
+
+</script>
