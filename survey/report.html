@@ -30,7 +30,7 @@
 		</div>-->
 		
 		<!--<div id="item1" class="mui-control-content ">-->
-			<div>
+		<div>
 			<!--<ul class="key_list">
 				<li>
 					<p class="key_title"></p>
@@ -39,7 +39,8 @@
 
 			</ul>-->
 			<div v-for="item in report">
-				<p class="point_desc" style="text-align: center; font-size: 16px;margin:20px 0 20px 0px;">{{item.title}}</p>
+				<!--lx for first for report-->
+				<p class="point_desc" style="text-align: center; font-size: 18px;margin:20px 0 20px 0px;">{{item.title}}</p>
 				<div class="point_box" style="margin:10px auto;">
 					<p class="sum_point">得分：{{item.score}}</p>
 					<p class="point_desc">{{item.type}}</p>
@@ -131,7 +132,7 @@ var app = new Vue({
 	el: '#app',
 	data: {
 	    report:[],
-	    rData:{},
+	    rData:{}
 	},
 	
 	created: function () {	
@@ -145,14 +146,38 @@ var app = new Vue({
 			sn,
 			batchid,
 		};
-		module._get(getReport,param ,(res) =>{
+		/*lx for static data*/
+		this.rData = {
+            title: '儿童心理测试',
+            result_img: null,
+            start_content: 'huhu',
+            end_content: 'uhuh'
+        }
+        this.report = [
+			{
+                title: 'first',
+                score: 99,
+                type: '活泼',
+                expound: '儿童心理健康',
+                proposal: '无'
+			},
+            {
+                title: 'second',
+                score: 70,
+                type: '专注力',
+                expound: '儿童集中力欠缺',
+                proposal: '魔方锻炼注意力'
+            }
+	    ]
+		/*lx delete*/
+		/*module._get(getReport,param ,(res) =>{
 //			alert(res.msg);
 			if(res.status == 1){
 				//this.report = res.data;
 				this.report = res.data.result;
 				this.rData = res.data
 			}
-		})
+		})*/
 		
 		pushHistory(); 
 	    window.addEventListener("popstate", function(e) { 

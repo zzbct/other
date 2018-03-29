@@ -395,6 +395,10 @@
 	background: #dff8fc;
 }
 
+.point_box>p{/*lx for first for report*/
+	font-size: 15px;
+}
+
 .sum_point{
 	width:auto;
 	height:auto;
@@ -442,7 +446,7 @@
 	margin:30px auto;
 	color:#353535;
 	line-height:25px;
-	font-size:14px;
+	font-size:16px;/*lx for first for report*/
 }
 
 .tip_bg{
@@ -599,14 +603,14 @@
 
 .r_btn{
 	width:60%;
-	height:40px;
+	height:42px;/*lx for first for report*/
 	margin:40px auto;
 	display: block;
 	background: #62c3d0;
 	color:#fff;
 	border:none;
 	letter-spacing: 1px;
-	font-size: 14px;
+	font-size: 16px;/*lx for first for report*/
 }
 
 .r_title{
@@ -615,7 +619,7 @@
 	height:30px;
 	line-height: 30px;
 	/*padding:5px 10px;*/
-	font-size: 14px;
+	font-size: 16px;/*lx for first-report*/
 	color:#fff;
 	background: #62c3d0;
 	margin:20px auto;
@@ -634,13 +638,15 @@
 	height:auto;
 	margin:20px auto;
 	text-indent: 2em;
-	line-height: 24px;
+	line-height: 26px;/*lx for first for report*/
+	font-size: 16px;/*lx for first-report*/
 }
 
 .title1{
 	width:100px;
-	height:25px;
-	line-height: 25px;
+	height:27px;/*lx for first-report*/
+	line-height: 27px;/*lx for first-report*/
+	font-size: 15px;
 	background: #63c3d1;
 	color:#fff;
 	text-align: center;
