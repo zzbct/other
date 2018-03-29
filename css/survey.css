@@ -198,7 +198,7 @@
 	height:30px;
 	line-height: 30px;
 	color: #353535;
-	font-size: 12px;
+	font-size: 14px;/*lx for first*/
 	float: left;
 	display: block;
 }
@@ -235,7 +235,7 @@
 	height:auto;
 	margin:20px auto 40px;
 	color:#353535;
-	font-size: 15px;
+	font-size: 17px;/*lx for first*/
 	clear: both;
 }
 
@@ -245,7 +245,7 @@
 	margin:40px auto 0;
 	color:#fff;
 	background: #62C3D0;
-	font-size: 14px;
+	font-size: 16px;/*lx for first*/
 	border-radius: 10px;
 	/*clear: both;*/	
 	letter-spacing: 2px;
@@ -301,7 +301,7 @@
 	height:40px;
 	line-height: 40px;
 	text-align: center;
-	font-size: 16px;
+	font-size: 18px;/*lx for first*/
 	color: #fff;
 } 
 
@@ -310,7 +310,7 @@
 	height:auto;
 	margin:30px auto;
 	color:#353535;
-	font-size: 14px;
+	font-size: 16px;/*lx for first*/
 }
 
 .start_btn{
@@ -321,6 +321,7 @@
 	color: #fff;
 	display: block;
 	margin:0 auto;
+	font-size: 16px;/*lx for first*/
 }
 
 .report_box{
@@ -565,7 +566,7 @@
 	height:80px;
 	line-height: 80px;
 	text-align: center;
-	font-size: 32px;
+	font-size: 34px;/*lx for first*/
 	color: #fff;
 } 
 
@@ -574,8 +575,8 @@
 	height:auto;
 	margin:30px auto;
 	color:#353535;
-	font-size: 28px;
-	line-height: 40px;
+	font-size: 30px;/*lx for first*/
+	line-height: 42px;/*lx for first*/
 }
 
 .start_btn{
@@ -586,6 +587,7 @@
 	color: #fff;
 	display: block;
 	margin:0 auto;
+	font-size: 16px;/*lx for first*/
 }
 
 }
