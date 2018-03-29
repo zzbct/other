@@ -87,9 +87,73 @@ var app = new Vue({
 		};
 		if(batch){
 			param.batch = batch;
-		}		
+		}
+		/*lx for static data*/
+		this.data = {
+            questionsList: [
+				{
+                    question_no: 1,
+                    title: "最爱吃的水果",
+                    options: [
+						{
+							optionId: 1,
+                            results: "A",
+							title: "苹果"
+                        },
+                        {
+                            optionId: 2,
+                            results: "B",
+                            title: "香蕉"
+                        },
+                        {
+                            optionId: 3,
+                            results: "C",
+                            title: "葡萄"
+                        },
+                        {
+                            optionId: 4,
+                            results: "D",
+                            title: "菠萝"
+                        }
+					]
+				},
+                {
+                    question_no: 2,
+                    title: "最爱吃的甜点",
+                    options: [
+                        {
+                            optionId: 1,
+                            results: "A",
+                            title: "奶油蛋糕"
+                        },
+                        {
+                            optionId: 2,
+                            results: "B",
+                            title: "芒果布丁"
+                        },
+                        {
+                            optionId: 3,
+                            results: "C",
+                            title: "橘子奶酪"
+                        },
+                        {
+                            optionId: 4,
+                            results: "D",
+                            title: "班戟"
+                        }
+                    ]
+                }
+			],
+            scale_info: {
+                title: "儿童心理测试",
+                guidance: "按第一感觉完成测试",
+				num: 2
+			}
+		}
+        this.num = this.data.scale_info.num;
+        this.current = this.data.questionsList[0].question_no;
 //		console.log(param);
-		module._get(getQuestionsList,param, (res)=>{
+		/*module._get(getQuestionsList,param, (res)=>{
 			//alert(res.msg);
 			if(res.status == 1){
 				this.data = res.data;
@@ -107,7 +171,7 @@ var app = new Vue({
 				$('#progress_img').css({'left':progress});
 				$('.progress_color').css({'width':progress});						
 			}
-		});
+		});*/
 	},
 	
     methods: { 
@@ -122,7 +186,7 @@ var app = new Vue({
 //			const val = $('#' + this.current).val();
 //			console.log(question_no);
 			/*lx for third*/
-			setTimeout(this.nextQuestion,2500);
+			setTimeout(this.nextQuestion,2300);
 				
 //				console.log(id);
 //			if(this.current < this.num){
