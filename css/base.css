@@ -137,7 +137,7 @@ body{
 }
 
 .cash_fee{
-	font-size: 14px;
+	font-size: 16px;/*lx for first for index*/
 	color: #62C3D0;
 }
 
@@ -172,7 +172,7 @@ body{
 	height:20px;
 	line-height: 20px;
 	color: #353535;
-	font-size: 14px;
+	font-size: 16px;/*lx for first for index*/
 	margin:12px 0 4px 0;
 }
 
@@ -198,17 +198,16 @@ body{
 	width:100%;
 	height:auto;
 	margin:6px auto 0;
-	
+	font-size: 15px;/*lx for first for index*/
 }
 
 .more_desc,.wait_desc,.complate_desc{
 	width:100%;
 	height:auto;
 	color:#888;
-	font-size: 14px;/*lx for first*/
-	line-height: 18px;/*lx for first*/
+	font-size: 14px;/*lx for first for test and index*/
+	line-height: 18px;/*lx for first for test and index*/
 }
-
 
 .left_wrap{
 	width:70%;

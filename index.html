@@ -126,13 +126,30 @@ var app = new Vue({
 	    scale:[],
 	},
 	
-	created: function () {		
-		module._get(getList,'',(res)=>{
+	created: function () {
+	    this.scale = [
+			{
+			    id: 1,
+				cover_img: null,
+				title: 'index 静态数据1',
+				price: 1.99,
+                tag_name: '测试1'
+			},
+            {
+                id: 2,
+                cover_img: null,
+                title: 'index 静态数据2',
+                price: 1.99,
+                tag_name: '测试2'
+            }
+		]
+	    /*lx delete*/
+		/*module._get(getList,'',(res)=>{
 			if(!res.data){
 				res.data = [];
 			}			
 			this.scale = res.data;
-		});  
+		});  */
 	},
 	
     methods: { 
