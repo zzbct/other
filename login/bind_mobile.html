@@ -23,7 +23,8 @@
             <p class="code_box">
             	<input type="number" value="" v-model="captcha" placeholder="请输入短信验证码" id="captcha" />
                 <span class="getCaptcha" @click="sendMsg" v-if="!qrbtnStatus">获取验证码</span>
-                <span class="getCaptcha grey" v-else style="color:#888;font-size:12px;">{{second}}</span>
+                <!--lx for first for login-->
+                <span class="getCaptcha grey" v-else style="color:#888;font-size:14px;">{{second}}</span>
             </p>
         </div>
     </div> 
