@@ -3,8 +3,8 @@
 	height: 110px;
 	margin: 48px auto 20px;
 	color: #353535;
-	font-size: 14px;
-	text-indent: 28px;
+	font-size: 16px;/*lx for first for write_user_info*/
+	text-indent: 32px;/*lx for first for write_user_info*/
 	position: relative;
 }
 
@@ -44,7 +44,7 @@
 
 .user_btn {
 	display: block;
-	font-size: 14px;
+	font-size: 16px;/*lx for first for write_user_info*/
 	background: #62C3D0;
 	color: #fff;
 	border: none;
@@ -65,7 +65,7 @@
 	line-height: 50px;
 	float: left;
 	color: #353535;
-	font-size: 15px;
+	font-size: 17px;/*lx for first for write_user_info*/
 	/*text-align: center;*/
 	letter-spacing: 17px;
 	/*background: #0f0;*/
@@ -93,7 +93,7 @@
 	height: 30px;
 	float: left;
 	line-height: 30px;
-	font-size: 12px;
+	font-size: 14px;/*lx for first for write_user_info*/
 	text-align: center;
 }
 
@@ -510,7 +510,7 @@
 	
 	.user_btn {
 		display: block;
-		font-size: 28px;
+		font-size: 30px;/*lx for first for write_user_info*/
 		background: #62C3D0;
 		color: #fff;
 		border: none;

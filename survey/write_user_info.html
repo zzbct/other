@@ -138,6 +138,10 @@
 		$(this).attr('id','active').siblings().attr('id','');
 		$('#sex_val').val($(this).val());
 	});
+	$('#age_list li').click(function(){
+		$(this).addClass('age_active').siblings().removeClass('age_active');
+		$('#age_val').val($(this).val());
+	});
 	$('#id_list li').click(function(){
 		$(this).addClass('id_active').siblings().removeClass('id_active');
 		$('#id_val').val($(this).val());
