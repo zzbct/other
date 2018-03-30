@@ -55,11 +55,22 @@ var app = new Vue({
 		const param = {
 			scale_id,
 		};
-		module._get(getDetail,param,(res) =>{
+		/*lx ststic data*/
+		this.data = {
+		    title: '进行测试',
+            cover_img: null,
+            content: 'huhu',
+			num: 10,
+			price: 1.99,
+            guidance: 'you must do this',
+			id: 1
+		}
+		/*lx delete*/
+		/*module._get(getDetail,param,(res) =>{
 			if(res.status == 1){
 				this.data = res.data;
 			}
-		}); 		
+		});*/
 	},
 	
     methods: { 
@@ -67,7 +78,7 @@ var app = new Vue({
 			const param = {
 				scale_id,
 			}
-			module._post(createOrder,param, (res)=>{
+           module._post(createOrder,param, (res)=>{
 				if(res.status == 1){
 					location.href = pay + '?outTradeNo=' + res.data.sn;
 				}else{

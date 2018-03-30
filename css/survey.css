@@ -127,7 +127,7 @@
 	width:92%;
 	height:30px;
 	line-height: 30px;
-	font-size: 16px;
+	font-size: 18px;/*lx for first for desc*/
 	color:#353535;
 	text-align: center;
 	letter-spacing: 2px;
@@ -146,7 +146,7 @@
 	height:auto;
 	margin:10px auto;
 	color:#353535;
-	font-size: 13px;
+	font-size: 15px;/*lx for first for desc*/
 	text-indent: 24px;
 }
 
@@ -523,7 +523,7 @@
 		height:auto;
 		margin:20px auto;
 		color:#353535;
-		font-size: 24px;
+		font-size: 26px;/*lx for first for desc*/
 		text-indent: 48px;
 		line-height: 40px;
 	}	
@@ -532,7 +532,7 @@
 		width:92%;
 		height:60px;
 		line-height: 60px;
-		font-size: 32px;
+		font-size: 34px;/*lx for first for desc*/
 		color:#353535;
 		text-align: center;
 		letter-spacing: 2px;
@@ -658,7 +658,7 @@
 
 
 .pay_button{
-	width:200px;
+	width:220px;/*lx for first for desc*/
 	height:40px;
 	line-height: 40px;
 	background: #a5e24d;
@@ -667,7 +667,7 @@
 	/*position:fixed;
 	left:0;
 	bottom:0;*/
-	font-size: 14px;
+	font-size: 16px;/*lx for first for desc*/
 	letter-spacing: 1px;
 	border-radius: 30px;
 	margin:0 auto;
