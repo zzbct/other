@@ -189,6 +189,7 @@
 	white-space: normal;/*lx for fifth*/
 	border-radius: 10px;
 	margin:60px auto;/*lx for second*/
+	text-align: left;
 	display:block;
 	height:auto;
 }
