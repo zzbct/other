@@ -122,12 +122,17 @@ var app = new Vue({
 		list2:[1],
 	},
 	
-	created: function () {	
-		module._get(getUser,'',(res) => {
+	created: function () {
+	    this.user = {
+            avatar_img: null,
+            uname: 'lx'
+		}
+	    /*lx delete*/
+		/*module._get(getUser,'',(res) => {
 			if(res.status == 1){
 				this.user = res.data;
 			}
-		});		
+		});	*/
 		
 		const type = 2; //初始化显示未完成
 		this.getOrderList(type);		
@@ -138,7 +143,44 @@ var app = new Vue({
 			const param = {
 				type,
 			};
-			module._get(getOrderList,param,(res)=>{
+			/*lx static data*/
+			if(type == 2){ // 未完成
+				this.list = [
+					{
+                        scale_id: 1,
+                        scale_title: '未完成1',
+                        scale_content: '语文作业1',
+                        batch: 'A',
+                        sn: 'unfinish'
+					},
+                    {
+                        scale_id: 2,
+                        scale_title: '未完成2',
+                        scale_content: '语文作业2',
+                        batch: 'B',
+                        sn: 'unfinsh'
+                    }
+				];
+			}else{
+				this.list2 = [
+                    {
+                        scale_id: 1,
+                        scale_title: '完成1',
+                        scale_content: '语文作业1',
+                        batch: 'A',
+                        sn: 'finish'
+                    },
+                    {
+                        scale_id: 2,
+                        scale_title: '完成2',
+                        scale_content: '语文作业2',
+                        batch: 'B',
+                        sn: 'finsh'
+                    }
+                ];
+			}
+			/*lx delete*/
+			/*module._get(getOrderList,param,(res)=>{
 //				alert(res.msg + type);
 				if(!res.data){
 					res.data = [];
@@ -148,16 +190,32 @@ var app = new Vue({
 				}else{
 					this.list2 = res.data;
 				}
-			});	
+			});*/
     		},
     		
     		getList:function(){
-			module._get(getList,'',(res)=>{
+    		    /*lx static data*/
+                this.recommendList = [
+					{
+					    id: 1,
+						tag_name: 'health',
+						title: '作业情况',
+						price: 1.99
+					},
+                    {
+                        id: 2,
+                        tag_name: 'health',
+                        title: '噬甜情况',
+                        price: 1.99
+                    }
+				]
+    		    /*lx delete*/
+			/*module._get(getList,'',(res)=>{
 				if(!res.data){
 					res.data = [];
 				}				
 				this.recommendList = res.data;
-			});	    			
+			});	    */
     		},
     		
     		goTest:function(batchid,scale_id,sn){

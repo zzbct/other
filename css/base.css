@@ -111,7 +111,7 @@ body{
 .promat_btn{
 	background: #62c3d0;
 	color:#fff;
-	font-size: 12px;
+	font-size: 14px;/*lx for first for user.index*/
 	margin:50px auto;
 	display: block;
 }
@@ -172,7 +172,7 @@ body{
 	height:20px;
 	line-height: 20px;
 	color: #353535;
-	font-size: 16px;/*lx for first for index,category*/
+	font-size: 16px;/*lx for first for index,category,user.index*/
 	margin:12px 0 4px 0;
 }
 
@@ -205,8 +205,8 @@ body{
 	width:100%;
 	height:auto;
 	color:#888;
-	font-size: 14px;/*lx for first for test,index,category*/
-	line-height: 18px;/*lx for first for test,index,category*/
+	font-size: 14px;/*lx for first for test,index,categor,user.indexy*/
+	line-height: 18px;/*lx for first for test,index,category,user.index*/
 }
 
 .left_wrap{
@@ -238,7 +238,7 @@ body{
 	.promat_btn{
 		background: #62c3d0;
 		color:#fff;
-		font-size: 16px;
+		font-size: 18px;/*lx for first for user.index*/
 		margin:50px auto 100px;
 		display: block;
 	}
